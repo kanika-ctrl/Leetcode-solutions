@@ -6,7 +6,7 @@ public:
             mp[nums[i]]++;
         }
         int max=INT_MIN;
-        int value=2;
+        int value;
         for(auto a:mp){
             int freq=a.second;
             if(max<freq){
