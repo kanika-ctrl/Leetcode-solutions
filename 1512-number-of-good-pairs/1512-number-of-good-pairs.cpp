@@ -8,9 +8,9 @@ public:
         int ans=0;
         for(auto it:mymap){
           int freq=it.second;
-          if(freq>1){
+          
             ans+=(freq*(freq+1)/2)-freq;
-          }
+          
         }
         return ans;
     }
