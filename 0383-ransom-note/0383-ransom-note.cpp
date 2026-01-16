@@ -6,7 +6,7 @@ public:
             mymap[it]++;
         }
         for(auto it:ransomNote){
-            if(!mymap[it]){
+            if(mymap[it]==0){
                 return false;
             }
             mymap[it]--;
