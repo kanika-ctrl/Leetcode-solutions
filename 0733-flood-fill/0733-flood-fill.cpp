@@ -12,8 +12,6 @@ public:
         vector<vector<int>> direction{{-1,0},{1,0},{0,-1},{0,1}};
         image[sr][sc]=color;
         while(!q.empty()){
-            int N=q.size();
-            for(int i=0;i<N;i++){
               pair<int,int> curr=q.front();
               q.pop();
               int y=curr.first;
@@ -25,7 +23,6 @@ public:
                    image[new_i][new_j]=color;
                    q.push({new_i,new_j});
            }      
-         }
             }
         }
         return image;
