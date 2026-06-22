@@ -1,34 +1,38 @@
 class Solution {
 public:
-bool dfs(vector<vector<int>>& graph,vector<bool> &visited,vector<bool> &inrec,int node){
-    visited[node]=1;
-    inrec[node]=1;
-    for(int i=0;i<graph[node].size();i++){
-        if(!visited[graph[node][i]] && dfs(graph,visited,inrec,graph[node][i])){
-      return true;
-        }
-        else if(inrec[graph[node][i]]){
-            return true;
-        }
-    }
-    inrec[node]=0;
-    return false;
-}
     vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
         int n=graph.size();
-        vector<bool> visited(n,0);
-        vector<bool> inrec(n,0);
+        vector<vector<int>> adj(n);
         for(int i=0;i<n;i++){
-            if(!visited[i]){
-                dfs(graph,visited,inrec,i);
+            for(int j=0;j<graph[i].size();j++){
+                adj[graph[i][j]].push_back(i);
             }
         }
-        vector<int> ans;
-        for(int i=0;i<n;i++){
-            if(inrec[i]!=1){
-                ans.push_back(i);
+       vector<int> indegree(n,0);
+       for(int i=0;i<n;i++){
+        for(int j=0;j<adj[i].size();j++){
+            indegree[adj[i][j]]++;
+        }
+       }
+       queue<int> q;
+       for(int i=0;i<n;i++){
+        if(indegree[i]==0){
+            q.push(i);
+        }
+       }
+       vector<int> ans;
+       while(!q.empty()){
+        int node=q.front();
+        q.pop();
+        ans.push_back(node);
+        for(int i=0;i<adj[node].size();i++){
+            indegree[adj[node][i]]--;
+            if(indegree[adj[node][i]]==0){
+                q.push(adj[node][i]);
             }
         }
-        return ans;
+       }
+       sort(ans.begin(),ans.end());
+       return ans;
     }
 };
