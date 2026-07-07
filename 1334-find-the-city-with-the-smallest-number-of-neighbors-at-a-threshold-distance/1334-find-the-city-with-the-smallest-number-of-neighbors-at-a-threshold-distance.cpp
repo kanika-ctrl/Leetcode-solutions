@@ -20,8 +20,8 @@ public:
                 }
             }
         }
-        pair<int,int> ans;
-        ans.second=INT_MAX;
+        int ans;
+        int ties=INT_MAX;
         int count=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
@@ -29,13 +29,13 @@ public:
                      count++;
                 }
             }
-            if(ans.second>=count){
-                ans.second=count;
-                ans.first=i;
+            if(ties>=count){
+                ties=count;
+                ans=i;
             }
             
             count=0;
         }
-        return ans.first;
+        return ans;
     }
 };
