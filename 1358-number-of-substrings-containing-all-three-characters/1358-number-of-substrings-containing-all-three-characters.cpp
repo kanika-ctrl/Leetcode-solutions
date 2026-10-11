@@ -14,11 +14,11 @@ public:
                 l++;
             }
         }
-         while(r==n-1 && freq[0]!=0 && freq[1]!=0 && freq[2]!=0){
-            ans+=n-r;
-            freq[s[l]-'a']--;
-            l++;
-         }
+        //  while(r==n-1 && freq[0]!=0 && freq[1]!=0 && freq[2]!=0){
+        //     ans+=n-r;
+        //     freq[s[l]-'a']--;
+        //     l++;
+        //  }
         return ans;
     }
 };
