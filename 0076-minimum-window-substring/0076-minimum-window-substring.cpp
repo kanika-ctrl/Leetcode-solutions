@@ -1,20 +1,17 @@
 class Solution {
 public:
     string minWindow(string s, string t) {
-        int l=0;
-        int start_l=0;
-        int r=0;
-        int ans=INT_MAX;
         int req=t.length();
-        if(req>s.length()){
-            return "";
-        }
+        int n=s.length();
+        if(req>n) return "";
+        int l=0;
+        int ans=INT_MAX;
+        int start_l=0;
         unordered_map<char,int> mp;
-        for(char &ch:t)
-        {
-           mp[ch]++;
+        for(auto &ch:t){
+            mp[ch]++;
         }
-        for(r=0;r<s.length();r++){
+        for(int r=0;r<n;r++){
             if(mp[s[r]]>0){
                 req--;
             }
@@ -25,7 +22,7 @@ public:
                     ans=currwid;
                     start_l=l;
                 }
-                mp[s[l]]++;
+                 mp[s[l]]++;
                 if(mp[s[l]]>0){
                     req++;
                 }
