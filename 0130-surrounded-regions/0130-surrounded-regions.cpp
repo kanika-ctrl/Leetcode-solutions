@@ -17,7 +17,7 @@ public:
         }
         while(!q.empty()){
             int size=q.size();
-            for(int k=0;k<size;k++){
+            // for(int k=0;k<size;k++){
                 pair<int,int> curr=q.front();
                 q.pop();
                 int i=curr.first;
@@ -29,7 +29,7 @@ public:
                         board[new_i][new_j]='#';
                         q.push({new_i,new_j});
                     }
-                }
+               // }
             }
         }
         for(int i=0;i<m;i++){
